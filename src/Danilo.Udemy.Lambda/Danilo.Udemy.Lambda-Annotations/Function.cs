@@ -16,7 +16,7 @@ public class Function
 
     public Function()
     {
-        // Instância do DynamoDBContext para realizar a consulta no DynamoDB.
+        // Instï¿½ncia do DynamoDBContext para realizar a consulta no DynamoDB.
         _dynamoDBContext = new DynamoDBContext(new AmazonDynamoDBClient());
     }
 
@@ -33,12 +33,40 @@ public class Function
         Guid.TryParse(usuarioId, out var id);
         return await _dynamoDBContext.LoadAsync<Usuarios>(id);
     }
+
+    [LambdaFunction]
+    [HttpApi(LambdaHttpMethod.Post, "usuarios")]
+    public async Task<Usuarios> FunctionHandler([FromBody] Usuarios usuario, ILambdaContext context)
+    {
+        await _dynamoDBContext.SaveAsync(usuario);
+        return usuario;
+    }
+
+    [LambdaFunction]
+    [HttpApi(LambdaHttpMethod.Put, "usuarios/{usuarioId}")]
+    public async Task<Usuarios> FunctionHandler(string usuarioId, [FromBody] Usuarios usuario, ILambdaContext context)
+    {
+        Guid.TryParse(usuarioId, out var id);
+        usuario.Id = id;
+        await _dynamoDBContext.SaveAsync(usuario);
+        return usuario;
+    }
+
+    [LambdaFunction]
+    [HttpApi(LambdaHttpMethod.Delete, "usuarios/{usuarioId}")]
+    public async Task<Usuarios> FunctionHandler(string usuarioId, ILambdaContext context)
+    {
+        Guid.TryParse(usuarioId, out var id);
+        var usuario = await _dynamoDBContext.LoadAsync<Usuarios>(id);
+        await _dynamoDBContext.DeleteAsync(usuario);
+        return usuario;
+    }
 }
 
 public class Usuarios
 {
-    // Atributo para definir a chave primária da tabela.
-    // DynamoDBHashKey: Chave primária do tipo hash.
+    // Atributo para definir a chave primï¿½ria da tabela.
+    // DynamoDBHashKey: Chave primï¿½ria do tipo hash.
     [DynamoDBHashKey]
     public Guid Id { get; set; }
     public string Nome { get; set; }
