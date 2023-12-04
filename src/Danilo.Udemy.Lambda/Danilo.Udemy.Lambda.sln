@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Danilo.Udemy.Lambda", "Danilo.Udemy.Lambda\Danilo.Udemy.Lambda.csproj", "{131C557C-4546-4430-A8A8-D28FC88B0830}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Danilo.Udemy.Lambda-Annotations", "Danilo.Udemy.Lambda-Annotations\Danilo.Udemy.Lambda-Annotations.csproj", "{505A31AC-9C76-4351-9715-EB533838775C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{131C557C-4546-4430-A8A8-D28FC88B0830}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{131C557C-4546-4430-A8A8-D28FC88B0830}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{131C557C-4546-4430-A8A8-D28FC88B0830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{505A31AC-9C76-4351-9715-EB533838775C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{505A31AC-9C76-4351-9715-EB533838775C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{505A31AC-9C76-4351-9715-EB533838775C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{505A31AC-9C76-4351-9715-EB533838775C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
